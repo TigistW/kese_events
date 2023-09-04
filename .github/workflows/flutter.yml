@@ -22,12 +22,7 @@ jobs:
           # 11
           flutter-version: "3.0.0"
           channel: 'stable'
-      # 12
-      # Navigate to the Flutter project directory
-      - name: Log Current Directory
-        run: |
-          pwd
-          
+      # 12  
       - name: Get dependencies
         run: flutter pub get
 
@@ -36,5 +31,3 @@ jobs:
         run: flutter build web
       - name: Start release build
         run: flutter test
-      - name: Start running project
-        run: flutter run -d chrome
