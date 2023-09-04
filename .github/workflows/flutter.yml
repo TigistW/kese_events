@@ -33,6 +33,8 @@ jobs:
 
       # Runs a set of commands using the runners shell
       - name: Start release build
-        run: flutter build
+        run: flutter build web
+      - name: Start release build
+        run: flutter test
       - name: Start running project
-        run: flutter run
+        run: flutter run -d chrome
