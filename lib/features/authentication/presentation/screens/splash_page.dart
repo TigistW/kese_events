@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:kese_events/features/authentication/presentation/screens/sign_in_page.dart';
 
 class SplashPage extends StatefulWidget {
   static const String routeName = "/splashpage";
@@ -8,18 +9,23 @@ class SplashPage extends StatefulWidget {
 }
 
 class _SplashState extends State<SplashPage> {
-
-  // _navigatetohome() async {
-  //   Future.delayed(
-  //     const Duration(milliseconds: 1500),
-  //     () => {
-  //           Navigator.pushNamed(
-  //             context,
-  //             HomePage.routeName,
-  //           ),
-  //         }
-  //   );
-  // }
+    @override
+  void initState() {
+    super.initState();
+    
+    _navigatetohome();
+  }
+  _navigatetohome() async {
+    Future.delayed(
+      const Duration(milliseconds: 1500),
+      () => {
+            Navigator.pushNamed(
+              context,
+              SignInPage.routeName,
+            ),
+          }
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
