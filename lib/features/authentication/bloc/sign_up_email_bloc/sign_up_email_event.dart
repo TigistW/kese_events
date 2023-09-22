@@ -10,11 +10,13 @@ abstract class SignUpEmailEvent extends Equatable {
 }
 
 class SignUpUserWithEmail extends SignUpEmailEvent {
-  String fullname;
+  String firstName;
+  String lastName;
   String email_address;
   String password;
   SignUpUserWithEmail({
-    required this.fullname,
+    required this.firstName,
+    required this.lastName,
     required this.email_address,
     required this.password,
   });

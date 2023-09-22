@@ -25,7 +25,8 @@ class SignUpEmailBloc extends Bloc<SignUpEmailEvent, SignUpEmailState> {
       if (event is SignUpUserWithEmail) {
         emit(
           SignUpEmailLoading(
-            fullname: event.fullname,
+            firstName: event.firstName,
+            lastName: event.lastName,
             email_address: event.email_address,
             password: event.password,
           ),
@@ -48,7 +49,8 @@ class SignUpEmailBloc extends Bloc<SignUpEmailEvent, SignUpEmailState> {
         try {
           Map<String, dynamic> response =
               await signUpEmailRepository.signUpWithEmail(
-            fullname: event.fullname,
+            firstName: event.firstName,
+            lastName: event.lastName,
             emailAddress: event.email_address,
             password: event.password,
           );

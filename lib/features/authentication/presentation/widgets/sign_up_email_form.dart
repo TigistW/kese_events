@@ -37,7 +37,9 @@ class _SignUpWithEmailState extends State<SignUpEmailForm> {
     print(SignUpEmailForm._formKey.currentState!.validate());
   }
 
-  String fullname = '';
+  String firstName = '';
+
+  String lastName = '';
 
   String email = '';
 
@@ -51,7 +53,8 @@ class _SignUpWithEmailState extends State<SignUpEmailForm> {
                     return;
                   }
                   context.read<SignUpEmailBloc>().add(SignUpUserWithEmail(
-                        fullname: fullname,
+                        firstName: firstName,
+                        lastName: lastName,
                         email_address: email,
                         password: password,
                       ));
@@ -69,15 +72,25 @@ class _SignUpWithEmailState extends State<SignUpEmailForm> {
           Column(
             children: [
               CustomTextField(
-                        hintText: 'Fullname',
+                        hintText: 'First Name',
                         prefixIcon: profileIcon,
                         validator: (value) =>
                             _validator.validateName(value)?.toString(),
                         onChanged: (value) {
                           setState(() {
-                            fullname = value;
+                            firstName = value;
                           });
-                        }), 
+                        }),
+                        CustomTextField(
+                  hintText: 'Last Name',
+                  prefixIcon: profileIcon,
+                  validator: (value) =>
+                      _validator.validateName(value)?.toString(),
+                  onChanged: (value) {
+                    setState(() {
+                      lastName = value;
+                    });
+                  }), 
 
               CustomTextField(
                   hintText: 'Email',

@@ -13,12 +13,14 @@ class SignUpEmailRepository {
   }
 
   Future<Map<String, dynamic>> signUpWithEmail({
-    required String fullname,
+    required String firstName,
+    required String lastName,
     required String emailAddress,
     required String password,
   }) async {
     return await sign_up_email_dataprovider.signUpUserWithEmail(
-        fullname: fullname,
+        firstName: firstName,
+        lastName: lastName,
         emailAddress: emailAddress,
         password: password);
   }

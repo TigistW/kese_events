@@ -22,7 +22,8 @@ abstract class SignUpEmailState extends Equatable {
 class SignUpEmailInitial extends SignUpEmailState {}
 
 class SignUpEmailLoading extends SignUpEmailState {
-  String fullname;
+  String firstName;
+  String lastName;
   @override
   String email_address;
   @override
@@ -31,7 +32,8 @@ class SignUpEmailLoading extends SignUpEmailState {
   String message = "";
 
   SignUpEmailLoading({
-    required this.fullname,
+    required this.firstName,
+    required this.lastName,
     required this.email_address,
     required this.password,
     this.user_status = UserStatus.Unkown,
@@ -40,7 +42,8 @@ class SignUpEmailLoading extends SignUpEmailState {
 
   @override
   List<Object> get props => [
-        this.fullname,
+        this.firstName,
+        this.lastName,
         this.email_address,
         this.password,
         this.user_status
@@ -48,7 +51,8 @@ class SignUpEmailLoading extends SignUpEmailState {
 }
 
 class SignUpEmailWaitForOTP extends SignUpEmailState {
-  String fullname;
+  String firstName;
+  String lastName;
   @override
   String email_address;
   @override
@@ -57,7 +61,8 @@ class SignUpEmailWaitForOTP extends SignUpEmailState {
   String message;
 
   SignUpEmailWaitForOTP({
-    required this.fullname,
+    required this.firstName,
+    required this.lastName,
     required this.email_address,
     required this.password,
     this.user_status = UserStatus.NewUser,
@@ -66,7 +71,8 @@ class SignUpEmailWaitForOTP extends SignUpEmailState {
 
   @override
   List<Object> get props => [
-        this.fullname,
+        this.firstName,
+        this.lastName,
         this.email_address,
         this.password,
         this.user_status

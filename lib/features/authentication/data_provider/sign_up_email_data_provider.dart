@@ -21,14 +21,16 @@ class SignUpEmailDataProvider {
   }
 
   Future<Map<String, dynamic>> signUpUserWithEmail({
-    required String fullname,
+    required String firstName,
+    required String lastName,
     required String emailAddress,
     required String password,
   }) async {
     final config = await DependencyInjector.getAppConfig();
 
     var data = json.encode({
-      "fullname": fullname,
+      "firstname": firstName,
+      "lastname": lastName,
       "email": emailAddress,
       "password": password
     });
