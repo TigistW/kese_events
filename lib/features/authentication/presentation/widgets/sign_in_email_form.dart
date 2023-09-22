@@ -4,6 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:kese_events/core/shared_widgets/shared_widgets.dart';
 import 'package:kese_events/features/authentication/presentation/screens/onboarding_page.dart';
+import 'package:kese_events/features/authentication/presentation/screens/sign_up_email_page.dart';
 import '../../../../core/utils/utils.dart';
 import '../../bloc/sign_in_bloc/index.dart';
 import 'package:flutter_advanced_switch/flutter_advanced_switch.dart';
@@ -219,7 +220,7 @@ class _SignInEmailFormState extends State<SignInEmailForm> {
                  SizedBox(
                   height: screenHeight * 0.03,
                 ),
-                Text(
+                const Text(
                   "OR",
                   textAlign:TextAlign.center
                 ),
@@ -228,39 +229,61 @@ class _SignInEmailFormState extends State<SignInEmailForm> {
                 ),
 
                 Container(
-                  child: Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        FloatingActionButton(
-                            elevation: 2,
-                            backgroundColor: Colors.white,
-                            onPressed: () {
+
+                  child:
+                        ElevatedButton(
+                          style: ElevatedButton.styleFrom(
+                              minimumSize: const Size.fromHeight(45),
+                            ),
+                          onPressed: () {
                               context
                                   .read<SignInBloc>()
                                   .add(SigninWithGoogle());
                             },
-                            child: CircleAvatar(
-                                backgroundColor: Colors.white,
-                                radius: 15,
-                                child: SvgPicture.asset(
-                                    "assets/images/google_icon.svg"))),
-                        TextButton(
-                          child: const Text(
-                            "Sign in with Google",
-                            style: TextStyle(
-                                fontSize: 13,
-                                fontWeight: FontWeight.w400,
-                                color: fontGrey),
-                          ),
-                          onPressed: () {
-                            context.read<SignInBloc>().add(SigninWithGoogle());
-                          },
-                        ),
-                      ]),
-                ),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                                children: [
+                                  CircleAvatar(
+                                  backgroundColor: Colors.white,
+                                  radius: 15,
+                                  child:SvgPicture.string(google_icon, height: screenHeight * 0.05625
+                                  )
+                                  ),
+                                  const Text(
+                                    'Sign in with Google',
+                                    style: TextStyle(
+                                        color: Colors.black,
+                                        fontWeight: FontWeight.bold,
+                                        fontFamily: 'poppins',
+                                        fontSize: 16),
+                                  )
+                                  ] 
+                                  )
+                                  )
+                     ),
                 SizedBox(
-                  height: screenHeight * 0.1,
-                )
+                  height: screenHeight * 0.05,
+                ),
+                Container(
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Text("Don't have an account?"),
+                      TextButton(
+                      child: const Text(
+                        "Sign Up",
+                        style: TextStyle(
+                            fontSize: 16,
+                            fontWeight: FontWeight.w500,
+                            color: themeColor),
+                      ),
+                      onPressed: () {
+                        Navigator.pushNamed(context,SignUpEmailPage.routeName);
+                      },
+                    ),
+                    ]
+                    ),)
+
               ],
             ),
           )),
