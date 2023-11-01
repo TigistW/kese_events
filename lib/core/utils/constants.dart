@@ -23,8 +23,8 @@ const TextStyle titleTextStyle2 = TextStyle(
 );
 
 const TextStyle smallTextStyle = TextStyle(
-    fontWeight: FontWeight.w300,
-    fontSize: 14,
+    fontWeight: FontWeight.w400,
+    fontSize: 18,
     letterSpacing: -0.25,
     color: smallTextColor);
 

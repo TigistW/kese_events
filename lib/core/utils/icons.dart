@@ -3,7 +3,30 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:kese_events/core/utils/utils.dart';
 
+
+
+final Map<String, IconData> tagIcons = {
+  "Sport": Icons.sports_soccer,
+  "Food": Icons.restaurant,
+  "Travel": Icons.airplanemode_active,
+  "Music": Icons.music_note,
+  "Art": Icons.palette,
+};
+
+
+
+
+
+
+
+
+
+
+
+
 var lockIcon = const Icon(IconData(0xe3ae, fontFamily: 'MaterialIcons'),
+    size: 20.0, color: fontGrey);
+var emailIcon2 = const Icon(IconData(0xe22a, fontFamily: 'MaterialIcons'),
     size: 20.0, color: fontGrey);
 var emailIcon = const Icon(IconData(0xe22a, fontFamily: 'MaterialIcons'),
     size: 20.0, color: fontGrey);

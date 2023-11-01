@@ -1,11 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:kese_events/features/authentication/presentation/screens/splash_page.dart';
+import 'package:kese_events/features/event/presentation/screens/home_page.dart';
 import 'package:kese_events/features/notification/notification_cubit/notification_cubit.dart';
-import 'package:kese_events/injector..dart';
+import 'package:kese_events/injector.dart';
+import 'package:kese_events/models/user/user.dart';
 import 'package:kese_events/routes.dart';
-
-void main() {
+import 'package:hive_flutter/hive_flutter.dart';
+import 'package:flutter/services.dart';
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  Hive.registerAdapter(UserAdapter());
+  await Hive.initFlutter();
   runApp(MyApp());
 }
 
@@ -37,11 +43,11 @@ class MyApp extends StatelessWidget {
               _messengerKey.currentState!.showSnackBar(
                 SnackBar(
                   content: Text(state.message),
-                  duration: const Duration(seconds: 10),
+                  duration:  Duration(seconds: 3),
                   behavior: SnackBarBehavior.floating,
-                  backgroundColor: Color.fromARGB(255, 238, 78, 15),
+                  backgroundColor: Color.fromARGB(255, 186, 74, 30),
                   action: SnackBarAction(
-                    label: "close",
+                    label: "Close",
                     textColor: Colors.white,
                     onPressed: () =>
                         _messengerKey.currentState!.hideCurrentSnackBar(),
@@ -56,11 +62,11 @@ class MyApp extends StatelessWidget {
               _messengerKey.currentState!.showSnackBar(
                 SnackBar(
                   content: Text(state.message),
-                  duration: const Duration(seconds: 10),
+                  duration: const Duration(seconds: 3),
                   behavior: SnackBarBehavior.floating,
                   backgroundColor: Colors.green.shade400,
                   action: SnackBarAction(
-                    label: "close",
+                    label: "Close",
                     textColor: Colors.white,
                     onPressed: () =>
                         _messengerKey.currentState!.hideCurrentSnackBar(),

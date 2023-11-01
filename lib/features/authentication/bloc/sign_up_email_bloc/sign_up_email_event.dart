@@ -14,11 +14,13 @@ class SignUpUserWithEmail extends SignUpEmailEvent {
   String lastName;
   String email_address;
   String password;
+  String confirm_password;
   SignUpUserWithEmail({
     required this.firstName,
     required this.lastName,
     required this.email_address,
     required this.password,
+    required this.confirm_password
   });
 }
 

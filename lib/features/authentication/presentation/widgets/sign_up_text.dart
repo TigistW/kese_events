@@ -12,12 +12,13 @@ class SignupText extends StatelessWidget {
       padding: EdgeInsets.only(
           left: screenWidth * 0.01025641025,
           right: screenWidth * 0.60512820512),
-      child: const Column(
+      child:  Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
             "Sign up",
-            style: TextStyle(fontSize: 30, fontWeight: FontWeight.w700),
+            style: TextStyle(
+                fontFamily: Poppins, fontSize: 30, fontWeight: FontWeight.w400),
           ),
         ],
       ),

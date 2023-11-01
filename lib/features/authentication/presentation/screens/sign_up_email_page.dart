@@ -32,14 +32,19 @@ class SignUpEmailPage extends StatelessWidget {
                       left: screenWidth * 0.1,
                       right: screenWidth * 0.1
                     ),
-                    child:const Row(
+                    child: Row(
                       children: [
-                       Icon(Icons.arrow_back),
+                        IconButton(
+                          icon: Icon(Icons.arrow_back),
+                          onPressed: () {
+                            Navigator.of(context).pop(); // Pop the current page
+                          },
+                        ),
                     ],
                     ),
                   ),
                   SizedBox(
-                    height: screenHeight * 0.035,
+                    height: screenHeight * 0.02,
                   ),
                     
                   const SignupText(),

@@ -17,3 +17,11 @@ class SubmissionFailed extends FormSubmissionState {
 
   SubmissionFailed(this.exception);
 }
+class SubmissionSuccessWithData extends FormSubmissionState {
+  List<Object> response = []; // Add a field to store the response data
+
+  SubmissionSuccessWithData(this.response);
+
+  @override
+  List<Object> get props => [response];
+}

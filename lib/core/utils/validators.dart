@@ -67,15 +67,15 @@ class Validators{
 
   String? validatePassword(String? password) {
     /*
-      the below regex check
-        * min length is 8
+      the below regex checks whether the password:
+        * min length is 6
         * contains atleast one uppercase or lower_case letter
         * contains atleast one number
-        * contains atleast one number
+        * contains atleast one symbol
     */
     RegExp regExp =
-        RegExp(r'^(?=.*?[A-Za-z])(?=.*?[0-9])(?=.*?[#?!@$%^+&*-]).{6,}$');
-    // RegExp(r'^.{0,}$');
+    //     RegExp(r'^(?=.*?[A-Za-z])(?=.*?[0-9])(?=.*?[#?!@$%^+&*-]).{6,}$');
+    RegExp(r'^.{4,}$');
 
     if (password!.isEmpty) {
       return 'Field is required!';
@@ -99,8 +99,12 @@ class Validators{
 
   bool passwordValidator(String value) {
     value = value.trim();
-    if (!RegExp(r'^(?=.*?[A-Za-z])(?=.*?[0-9])(?=.*?[#?!@+$%^&*-]).{6,}$')
-        .hasMatch(value)) {
+    // if (!RegExp(r'^(?=.*?[A-Za-z])(?=.*?[0-9])(?=.*?[#?!@+$%^&*-]).{6,}$')
+    //     .hasMatch(value))
+
+    if (!RegExp(r'^.{4,}$')
+        .hasMatch(value))
+         {
       return false;
     } else {
       return true;

@@ -1,2 +1,2 @@
-String PoppinsBold = 'Poppins Bold';
-String Poppins = 'Poppins';
+String PoppinsBold = 'poppins Bold';
+String Poppins = 'poppins';

@@ -3,7 +3,7 @@ import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:kese_events/features/authentication/bloc/sign_in_bloc/index.dart';
-import 'package:kese_events/injector..dart';
+import 'package:kese_events/injector.dart';
 
 import '../widgets/auth_widgets.dart';
 import '../widgets/sign_in_email_form.dart';
@@ -24,7 +24,9 @@ class SignInPage extends StatelessWidget{
       child: BlocProvider(
         create: (context) {
           return SignInBloc(
-            signInRepository: DependencyInjector.getSignInRepository()!,
+            signInRepository: DependencyInjector.getSignInRepository()!, 
+            userProfileRepository: DependencyInjector.getProfileRepository()!, 
+            userHiveRepository: DependencyInjector.getUserHiveRepository()!,
           );
         },
 

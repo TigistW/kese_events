@@ -26,3 +26,18 @@ class LogoName extends StatelessWidget {
   }
 }
 
+class SplashPageLogo extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    final screenHeight = MediaQuery.of(context).size.height;
+    return Container(
+      padding: EdgeInsets.fromLTRB(20, 0, 0, 0),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.center, 
+        children: [
+        SvgPicture.string(logoName, height: screenHeight * 0.07625),
+      ]),
+    );
+  }
+}
+

@@ -20,6 +20,19 @@ abstract class SignUpEmailState extends Equatable {
 }
 
 class SignUpEmailInitial extends SignUpEmailState {}
+class SignUpEmailDataRetained extends SignUpEmailState {
+  final String firstName;
+  final String lastName;
+  final String email_address;
+  final String password;
+
+  SignUpEmailDataRetained({
+    required this.firstName,
+    required this.lastName,
+    required this.email_address,
+    required this.password,
+  });
+}
 
 class SignUpEmailLoading extends SignUpEmailState {
   String firstName;
@@ -110,6 +123,7 @@ class SignUpEmailVerifyOTPInitial extends SignUpEmailState {
 class SignUpEmailVerifyOTPWaiting extends SignUpEmailState {}
 
 class SignUpEmailInvalidOTP extends SignUpEmailState {
+  
   @override
   String email_address;
   @override

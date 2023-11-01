@@ -9,6 +9,7 @@ class SignInRepository {
     required String email,
     required String password,
   }) async {
+    print("now in repo");
     return await signInDataProvider.signInEmail(
         email: email, password: password);
   }

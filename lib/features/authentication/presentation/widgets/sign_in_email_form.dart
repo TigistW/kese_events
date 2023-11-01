@@ -2,9 +2,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:lottie/lottie.dart';
+import 'package:kese_events/core/shared_widgets/custome_button_auth.dart';
 import 'package:kese_events/core/shared_widgets/shared_widgets.dart';
 import 'package:kese_events/features/authentication/presentation/screens/onboarding_page.dart';
 import 'package:kese_events/features/authentication/presentation/screens/sign_up_email_page.dart';
+import 'package:kese_events/features/event/presentation/screens/home_page.dart';
 import '../../../../core/utils/utils.dart';
 import '../../bloc/sign_in_bloc/index.dart';
 import 'package:flutter_advanced_switch/flutter_advanced_switch.dart';
@@ -47,7 +50,6 @@ class _SignInEmailFormState extends State<SignInEmailForm> {
     if (_formKey.currentState!.validate()) {
       _formKey.currentState!.save();
       if (isEmail && passwordVal) {
-        print("email is being used");
         context
             .read<SignInBloc>()
             .add(SigninEmailSubmitted(email: email.trim(), password: password));
@@ -65,8 +67,7 @@ class _SignInEmailFormState extends State<SignInEmailForm> {
       bloc: BlocProvider.of<SignInBloc>(context),
       listener: (BuildContext context, state) {
         if (state.formState is SubmissionSuccess) {
-          print("submission success emmitted");
-          Navigator.popAndPushNamed(context, OnboardingPage.routeName);
+          Navigator.popAndPushNamed(context, HomePage.routeName);
         }
       },
       child: Form(
@@ -85,13 +86,10 @@ class _SignInEmailFormState extends State<SignInEmailForm> {
                         prefixIcon: emailIcon,
                         validator: (String? value) {
                           if (value!.isEmpty) {
-                            return 'Field is required';
+                            return 'Email is required!';
                           } else {
                             value = value.trim();
                             isEmail = validator.emailValidator(value);
-                            print("vvvvvvvvvvvvvvvvvvvv");
-                            print(isEmail);
-
                             if (!isEmail) {
                               return 'Please enter a valid email';
                             }
@@ -99,11 +97,8 @@ class _SignInEmailFormState extends State<SignInEmailForm> {
                         },
                         onChanged: (value) {
                           isEmail = validator.emailValidator(value);
-
                           if (isEmail == true) {
                             email = value.trim();
-                            print("hhhhhhhhhhhhhhhhhhhhhh");
-                            print(email);
                           }
                         });
                   },
@@ -111,16 +106,16 @@ class _SignInEmailFormState extends State<SignInEmailForm> {
                 BlocBuilder<SignInBloc, SignInState>(
                   builder: (context, state) {
                     return PasswordField(
-                        hintText: "Your Password",
+                        hintText: "Your password",
                         prefixIcon: lockIcon,
                         validator: (String? value) {
                           if (value!.isEmpty) {
-                            return 'Field is required!';
+                            return 'Password is required!';
                           } else {
                             passwordVal = validator.passwordValidator(value);
                             if (passwordVal) {
                             } else {
-                              return 'Invalid input!';
+                              return 'Invalid password!';
                             }
                           }
                         },
@@ -129,18 +124,7 @@ class _SignInEmailFormState extends State<SignInEmailForm> {
                         });
                   },
                 ),
-                BlocBuilder<SignInBloc, SignInState>(builder: (context, state) {
-                  return state.formState is SubmissionFailed
-                      ? Container(
-                          padding: const EdgeInsets.all(20),
-                          child: const Text(
-                            'Sign in failed, please try again.',
-                            style: TextStyle(
-                                color: choiceMarkerWrong, fontFamily: 'Roboto'),
-                          ),
-                        )
-                      : Container();
-                }),
+               
                 Container(
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -161,12 +145,13 @@ class _SignInEmailFormState extends State<SignInEmailForm> {
                           ),
 
                           TextButton(
-                        child: const Text(
+                        child:  Text(
                           "Remember Me",
                           style: TextStyle(
-                              fontSize: 16,
-                              fontWeight: FontWeight.w500,
-                              color: themeColor),
+                              fontSize: 18,
+                              fontWeight: FontWeight.w400,
+                              fontFamily:Poppins,
+                              color: fontGrey),
                         ),
                         onPressed: () {
                           Navigator.pushNamed(context,'');
@@ -176,12 +161,13 @@ class _SignInEmailFormState extends State<SignInEmailForm> {
                       ),
                       
                       TextButton(
-                        child: const Text(
+                        child:  Text(
                           "Forgot Password?",
                           style: TextStyle(
-                              fontSize: 16,
-                              fontWeight: FontWeight.w500,
-                              color: themeColor),
+                              fontSize: 18,
+                              fontWeight: FontWeight.w400,
+                              color: themeColor,
+                              fontFamily:Poppins),
                         ),
                         onPressed: () {
                           Navigator.pushNamed(
@@ -191,102 +177,71 @@ class _SignInEmailFormState extends State<SignInEmailForm> {
                     ],
                   ),
                 ),
-                
-                SizedBox(
-                  height: screenHeight * 0.03,
-                ),
+                 BlocBuilder<SignInBloc, SignInState>(builder: (context, state) {
+                  return state.formState is SubmissionFailed
+                      ? Container(
+                          padding: const EdgeInsets.all(20),
+                          child:  Text(
+                            'Sign in failed, please try again.',
+                            style: TextStyle(
+                              fontSize: 18,
+                                color: choiceMarkerWrong, fontFamily: Poppins),
+                          ),
+                        )
+                      : Container();
+                }),
+                // SizedBox(
+                //   height: screenHeight * 0.03,
+                // ),
                 BlocBuilder<SignInBloc, SignInState>(builder: (context, state) {
                   return state.formState is FormSubmitting
-                      ? const CircularProgressIndicator()
-                      : ElevatedButton(
-                          style: ElevatedButton.styleFrom(
-                            primary: themeColor,
-                            minimumSize: const Size.fromHeight(45),
-                            
-                          ),
-                          child: const Text(
-                            'Sign in',
-                            style: TextStyle(
-                                color: Colors.white,
-                                fontWeight: FontWeight.bold,
-                                fontFamily: 'poppins',
-                                fontSize: 16),
-                          ),
-                          onPressed: () {
-                            _handleFormSubmit();
-                          },
-                        );
+                      // ? const CircularProgressIndicator()
+                      ? Container(
+                        height: screenHeight * 0.1,
+                        child: Lottie.asset(
+                          'assets/lottie/loading_lottie.json',
+                          width: screenHeight * 0.3,
+                          height: screenHeight * 0.3,
+                          repeat: true, // Set to true to loop the animation
+                        ),
+                      )
+                      : CustomButtonAuth(
+                        labelText: 'Log In',
+                        icon: Icon(Icons.arrow_forward, color: blackText,),
+                        onPressed: _handleFormSubmit,);
                 }),
-                 SizedBox(
-                  height: screenHeight * 0.03,
+                SizedBox(
+                  height: screenHeight * 0.017,
                 ),
-                const Text(
+                Text(
                   "OR",
+                  style: TextStyle(color: fontGrey, fontSize: 21, fontFamily: Poppins, fontWeight: FontWeight.w400),
                   textAlign:TextAlign.center
                 ),
                  SizedBox(
-                  height: screenHeight * 0.03,
+                  height: screenHeight * 0.017,
                 ),
-
-                Container(
-
-                  child:
-                        ElevatedButton(
-                          style: ElevatedButton.styleFrom(
-                              minimumSize: const Size.fromHeight(45),
-                            ),
-                          onPressed: () {
+                CustomButtonGoogleAuth(
+                        labelText: 'Login with Google',
+                        onPressed: () {
                               context
                                   .read<SignInBloc>()
                                   .add(SigninWithGoogle());
-                            },
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                                children: [
-                                  CircleAvatar(
-                                  backgroundColor: Colors.white,
-                                  radius: 15,
-                                  child:SvgPicture.string(google_icon, height: screenHeight * 0.05625
-                                  )
-                                  ),
-                                  const Text(
-                                    'Sign in with Google',
-                                    style: TextStyle(
-                                        color: Colors.black,
-                                        fontWeight: FontWeight.bold,
-                                        fontFamily: 'poppins',
-                                        fontSize: 16),
-                                  )
-                                  ] 
-                                  )
-                                  )
-                     ),
+                            },),
                 SizedBox(
                   height: screenHeight * 0.05,
                 ),
-                Container(
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Text("Don't have an account?"),
-                      TextButton(
-                      child: const Text(
-                        "Sign Up",
-                        style: TextStyle(
-                            fontSize: 16,
-                            fontWeight: FontWeight.w500,
-                            color: themeColor),
-                      ),
-                      onPressed: () {
+                HaveAnAccount(
+                  labelText:"Don't have an account?" ,
+                  labelText2: "Sign up",
+                  onPressed: () {
                         Navigator.pushNamed(context,SignUpEmailPage.routeName);
                       },
-                    ),
-                    ]
-                    ),)
-
+                  )
               ],
             ),
-          )),
+          )
+      ),
     );
   }
 }

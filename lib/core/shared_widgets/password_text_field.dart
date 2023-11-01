@@ -38,12 +38,16 @@ class _PasswordFieldState extends State<PasswordField> {
           decoration: InputDecoration(
               prefixIcon: widget.prefixIcon,
               filled: true,
-              fillColor: backgroundGrey,
-              hoverColor: backgroundGrey,
-              border: InputBorder.none,
+              fillColor: backgroundForTextField,
+              hoverColor: backgroundForTextField,
+              border: OutlineInputBorder(
+                  borderSide:  const BorderSide(
+                    color: fontGrey, 
+                    width: 1),
+                  borderRadius: BorderRadius.circular(10)),
               enabledBorder: OutlineInputBorder(
-                  borderSide: BorderSide.none,
-                  borderRadius: BorderRadius.circular(5)),
+                  borderSide: const BorderSide(color: fontGrey, width: 1),
+                  borderRadius: BorderRadius.circular(10)),
               contentPadding:
                   const EdgeInsets.symmetric(vertical: 15, horizontal: 0.0),
               hintText: widget.hintText,
@@ -62,9 +66,9 @@ class _PasswordFieldState extends State<PasswordField> {
               )),
           style: TextStyle(
             color: fontGrey,
-            fontWeight: FontWeight.w300,
-            fontSize: 14,
-            fontFamily: 'Poppins',
+            fontWeight: FontWeight.w400,
+            fontSize: 18,
+            fontFamily: Poppins,
           ),
         ),
       ],

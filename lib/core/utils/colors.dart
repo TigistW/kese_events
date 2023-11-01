@@ -1,11 +1,37 @@
 import 'package:flutter/material.dart';
 
-const Color headerText = Color(0xFF000000);
-const Color headerBackground = Color(0xFFFFFFFF);
-const Color backgroundGrey = Color.fromRGBO(246, 246, 246, 1);
-const Color fontGrey = Color.fromRGBO(134, 158, 160, 1);
-const Color smallTextColor = Color.fromRGBO(32, 65, 68, 1);
+//colors used
+const Color fontGrey = Color.fromRGBO(134, 130, 130, 1);
 const Color backgroundThemeColor = Color.fromRGBO(236, 245, 245, 1);
+
+
+const Color themeColor = Color.fromRGBO(3, 132, 0, 1);
+const Color themeColorDarker = Color.fromRGBO(4, 70, 3, 1);
+
+const Color blackText = Color.fromRGBO(0, 0, 0, 1);
+const Color whitishBackground = Color.fromRGBO(255,255,255, 1);
+
+// Loading (Shimmer) Colors
+const Color loadingBaseColor = Color.fromRGBO(216, 216, 216, 1);
+const Color loadingHighlightColor = Color.fromRGBO(255, 255, 255, 1);
+
+// tag colors
+
+const List<Color> tagColors = [
+      Color.fromARGB(255, 81, 177, 255),
+      Color.fromARGB(255, 255, 164, 157),
+      Color.fromARGB(255, 159, 255, 162),
+      Color.fromARGB(255, 255, 208, 136),
+      Color.fromARGB(255, 239, 149, 255),
+      Color.fromARGB(255, 69, 255, 236),
+    ];
+
+const Color headerText = Color(0xFF000000);
+const Color headerBackground = Color.fromARGB(255, 113, 219, 103);
+const Color backgroundGrey = Color.fromRGBO(246, 246, 246, 1);
+const Color backgroundForTextField=Color.fromARGB(255, 255, 255, 255);
+
+const Color smallTextColor = Color.fromRGBO(32, 65, 68, 1);
 const Color timerBackground = Color(0xFF7EC28D);
 const Color choiceCardBackground = Color(0xFFF3F8F8);
 const Color choiceCardIcon = Color(0xFF7EC28D);
@@ -33,9 +59,7 @@ const Color onCorrect = Colors.white;
 const Color onWrong = Colors.white;
 const Color drawerIcon = Color(0xFF224428);
 
-// Loading (Shimmer) Colors
-const Color loadingBaseColor = Color.fromRGBO(217, 217, 217, 1);
-const Color loadingHighlightColor = Color.fromRGBO(241, 241, 241, 1);
+
 
 // Contributor Component
 const Color contributorTextColor = Color(0xff406C70);
@@ -44,14 +68,13 @@ const Color resourcesIconColor = Color(0xff7EC28D);
 // comment component
 const Color commentBackground = Color.fromRGBO(244, 244, 244, 1);
 const Color commentPublishButtonColor = Color.fromRGBO(126, 194, 141, 1);
-const Color commentPublishDisplayButtonColor =
-    Color.fromARGB(160, 160, 160, 169);
+const Color commentPublishDisplayButtonColor = Color.fromARGB(160, 160, 160, 169);
 const Color commentTextColor = Color.fromRGBO(96, 117, 119, 1);
 const Color commentUserColor = Color.fromRGBO(32, 68, 40, 1);
 const Color commentHintColor = Color.fromRGBO(194, 194, 194, 1);
 const Color commentDateColor = Color.fromRGBO(134, 158, 160, 1);
 // Quiz Colors
-const Color themeColor = Color(0xFF7EC28D);
+
 const Color detailTitleColor = Color(0xFF204428);
 const Color posterNameColor = Color(0xFFA5ADAC);
 // Shared

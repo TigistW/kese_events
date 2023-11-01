@@ -1,18 +1,29 @@
 import 'dart:convert';
+import 'package:hive/hive.dart';
 
+part 'user.g.dart';
+@HiveType(typeId: 12)
 class User {
-  final String id;
-  final String firstName;
-  final String lastName;
-  final String email;
-  final String userName;
+  @HiveField(0)
+  final int? id;
+  @HiveField(1)
+  final String? firstName;
+  @HiveField(2)
+  final String? lastName;
+  @HiveField(3)
+  final String? email;
+  @HiveField(4)
+  final String? profilePicture;
+  @HiveField(5)
+  final String? phoneNumber;
 
   User(
     this.id,
     this.firstName,
     this.lastName,
     this.email,
-    this.userName,
+    this.profilePicture,
+    this.phoneNumber,
   );
 
   Map<String, dynamic> toMap() {
@@ -21,17 +32,19 @@ class User {
       'firstName': firstName,
       'lastName': lastName,
       'email': email,
-      'userName': userName,
+      'profilePicture': profilePicture,
+      'phoneNumber': phoneNumber,
     };
   }
 
   factory User.fromMap(Map<String, dynamic> map) {
     return User(
-      map['_id'] ?? "",
+      map['id'] ?? "",
       map['firstName'] ?? '',
       map['lastName'] ?? '',
       map['email'] ?? '',
-      map['userName'] ?? '',
+      map['profilePicture'] ?? '',
+      map['phone_number'] ?? '',
     );
   }
 
